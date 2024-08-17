@@ -11,7 +11,7 @@ function App() {
 
   return (
       <Router>
-        <PreLoader />
+        <PreLoader/>
         <Routes>
             <Route path='/' element={<HomePage/>} />
             <Route path='/login' element={<LoginPage/>} />
