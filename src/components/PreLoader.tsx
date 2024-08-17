@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useNavigationType } from "react-router-dom";
+import { useLocation, useNavigationType } from "react-router-dom";
 import './css/preloader.css'
 
 const PreLoader: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const location = useLocation();
-    const navigate = useNavigate();
     const navigationType = useNavigationType();
 
     useEffect(() => {
