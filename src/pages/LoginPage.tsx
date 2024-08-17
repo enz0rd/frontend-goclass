@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const HomePage = () => {
+const LoginPage = () => {
     return (
         <>
             <NavLink to="/register">c</NavLink>
@@ -8,4 +8,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage;
+export default LoginPage;

@@ -1,47 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigationType } from "react-router-dom";
-import './css/preloader.css'
+import { motion } from 'framer-motion';
+import './css/preloader.css';
 
-const PreLoader: React.FC = () => {
-    const [loading, setLoading] = useState(true);
-    const location = useLocation();
-    const navigationType = useNavigationType();
-
-    useEffect(() => {
-        const handleLoad = () => {
-            setLoading(false);
-        };
-
-        window.addEventListener('load', handleLoad);
-
-        return () => {
-            window.removeEventListener('load', handleLoad);
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleStart = () => setLoading(true);
-        const handleStop = () => setLoading(false);
-
-        if (navigationType === 'PUSH' || navigationType === 'POP') {
-            handleStart();
-            handleStop();
-        }
-
-        return () => {
-            // Cleanup if necessary
-        };
-    }, [navigationType]);
-
-    useEffect(() => {
-        setLoading(false);
-    }, [location]);
-
+const Preloader = () => {
     return (
-        <div className={`preloader ${loading ? 'active' : 'fade-out'}`}>
-            <div className="loading-circle"></div>
-        </div>
-    )
+        <motion.div 
+            className="loader"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+        >
+            <div className="spinner"></div>
+        </motion.div>
+    );
 };
 
-export default PreLoader;
+export default Preloader;

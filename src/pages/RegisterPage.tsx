@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const HomePage = () => {
+const RegisterPage = () => {
     return (
         <>
             <NavLink to="/" className="bg-zinc-800 w-[20rem]">b</NavLink>
@@ -9,4 +9,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage;
+export default RegisterPage;
