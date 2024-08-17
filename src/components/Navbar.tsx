@@ -84,7 +84,7 @@ const Navbar = () => {
                     </div>
                     <Toggle
                       id="theme"
-                      onClick={() => setDarkTheme(prev => !prev)} // Alterna o estado do tema
+                      onClick={() => setDarkTheme(!isDarkTheme)} // Alterna o estado do tema
                     >
                       {isDarkTheme ? (
                         <FaSun className="fill-white" />
@@ -145,7 +145,7 @@ const Navbar = () => {
               >
                 Sobre Nós
               </NavLink>
-              <Toggle id="theme" onClick={() => setDarkTheme(prev => !prev)}>
+              <Toggle id="theme" onClick={() => setDarkTheme(!isDarkTheme)}>
                 {isDarkTheme ? <FaSun className="fill-white" /> : <FaMoon />}
               </Toggle>
             </nav>
