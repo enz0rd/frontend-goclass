@@ -15,18 +15,15 @@ import {
   PopoverContent,
 } from "@radix-ui/react-popover";
 import { Label } from "./ui/label";
-import { Switch } from "@radix-ui/react-switch";
 import { Toggle } from "@radix-ui/react-toggle";
 
 const Navbar = () => {
-  const [isDarkTheme, setDarkTheme] = useState(false);
+  const actualTheme = JSON.parse(localStorage.getItem('darkmode') || 'false');
+  const [isDarkTheme, setDarkTheme] = useState(actualTheme); // Inicializa com o valor do localStorage
 
   useEffect(() => {
-    if (isDarkTheme) {
-      document.documentElement.classList.add("dark"); // Adiciona a classe 'dark' ao elemento raiz do documento
-    } else {
-      document.documentElement.classList.remove("dark"); // Remove a classe 'dark' do elemento raiz do documento
-    }
+    document.documentElement.classList.toggle("dark", isDarkTheme); // Adiciona ou remove a classe 'dark' com base no estado
+    localStorage.setItem('darkmode', JSON.stringify(isDarkTheme)); // Armazena o valor no localStorage
   }, [isDarkTheme]);
 
   return (
@@ -87,7 +84,7 @@ const Navbar = () => {
                     </div>
                     <Toggle
                       id="theme"
-                      onClick={() => setDarkTheme(!isDarkTheme)}
+                      onClick={() => setDarkTheme(prev => !prev)} // Alterna o estado do tema
                     >
                       {isDarkTheme ? (
                         <FaSun className="fill-white" />
@@ -148,7 +145,7 @@ const Navbar = () => {
               >
                 Sobre Nós
               </NavLink>
-              <Toggle id="theme" onClick={() => setDarkTheme(!isDarkTheme)}>
+              <Toggle id="theme" onClick={() => setDarkTheme(prev => !prev)}>
                 {isDarkTheme ? <FaSun className="fill-white" /> : <FaMoon />}
               </Toggle>
             </nav>

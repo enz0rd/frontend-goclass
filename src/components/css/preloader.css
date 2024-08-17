@@ -1,5 +1,5 @@
 .loader {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Cor de fundo para o modo claro */
     height: 100vh;
     width: 100%;
     position: fixed;
@@ -11,11 +11,39 @@
     align-items: center;
 }
 
+.loaderdark {
+    background-color: #1a1a1a; /* Cor de fundo para o modo claro */
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader.fade-out {
+    background-color: transparent; /* Torna o fundo transparente durante o fade out */
+}
+
+.loaderdark.fade-out {
+    background-color: transparent; /* Torna o fundo transparente durante o fade out */
+}
+
 .loader .spinner {
-    border: 3px solid #cbcbcb;
-    /* Light grey */
-    border-top: 3px solid #1e1e1e;
-    /* Blue */
+    border: 3px solid #cbcbcb; /* Cinza claro */
+    border-top: 3px solid #1e1e1e; /* Azul */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+}
+
+.loaderdark .spinner {
+    border: 3px solid #1e1e1e; /* Cinza claro */
+    border-top: 3px solid #cbcbcb; /* Azul */
     border-radius: 50%;
     width: 80px;
     height: 80px;

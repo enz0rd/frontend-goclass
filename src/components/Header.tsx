@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Button } from "./ui/button";
 import { NavLink } from "react-router-dom";
 
@@ -19,6 +19,8 @@ const Header = () => {
           loop
           muted
           className="object-cover w-full h-full"
+          controls={false} // Adicionado para desativar os controles
+          onContextMenu={(e) => e.preventDefault()} // Adicionado para desativar o menu de contexto
         >
           <source src={video} type="video/mp4" />
         </video>
