@@ -1,4 +1,4 @@
-import darkLogo from "/assets/Logos/GoclassLogo-light.svg";
+import darkLogo from "@/assets/Logos/GoclassLogo-light.svg";
 import { NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
