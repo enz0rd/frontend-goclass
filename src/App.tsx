@@ -9,8 +9,7 @@ import Preloader from "./components/PreLoader";
 function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
-  const isDarkTheme = JSON.parse(localStorage.getItem('darkmode') || 'false');
-   
+
   useEffect(() => {
     // Simulate a loading delay
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -23,15 +22,14 @@ function App() {
         <Preloader key="preloader" />
       ) : (
         <motion.div
-          style={{ 
-            background: isDarkTheme ? 'loaderdark' : 'loader', // Corrigido para usar um objeto
-            width: "100%", 
-            height: "100%" 
+          style={{
+            width: "100%",
+            height: "100%",
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7 }}
         >
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />

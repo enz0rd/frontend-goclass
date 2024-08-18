@@ -1,4 +1,5 @@
-import Header from "@/components/Header";
+import Header from "@/components/homepage/Header";
+import HomeFeatures from "@/components/homepage/HomeFeatures";
 import Navbar from "@/components/Navbar";
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
     <div className="w-full">
       <Navbar />
       <Header />
+      <HomeFeatures />
     </div>
   );
 };

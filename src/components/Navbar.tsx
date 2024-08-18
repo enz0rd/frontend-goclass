@@ -18,12 +18,15 @@ import { Label } from "./ui/label";
 import { Toggle } from "@radix-ui/react-toggle";
 
 const Navbar = () => {
-  const actualTheme = JSON.parse(localStorage.getItem('darkmode') || 'false');
-  const [isDarkTheme, setDarkTheme] = useState(actualTheme); // Inicializa com o valor do localStorage
+  const localStorageTheme = JSON.parse(
+    localStorage.getItem("darkmode") || "false"
+  ); // Pega o valor do localStorage
+  const [isDarkTheme, setDarkTheme] = useState(localStorageTheme); // Inicializa com o valor do localStorage
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkTheme); // Adiciona ou remove a classe 'dark' com base no estado
-    localStorage.setItem('darkmode', JSON.stringify(isDarkTheme)); // Armazena o valor no localStorage
+    document.querySelector(".bg")?.classList.toggle("dark", isDarkTheme); // Adicione a classe 'dark' à div com a classe 'bg' quando o tema for escuro
+    localStorage.setItem("darkmode", isDarkTheme); // Armazena o valor no localStorage
   }, [isDarkTheme]);
 
   return (

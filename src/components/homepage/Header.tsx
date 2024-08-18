@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { NavLink } from "react-router-dom";
 
 const video = "/Videos/videoplayback.mp4";
@@ -25,15 +25,15 @@ const Header = () => {
           <source src={video} type="video/mp4" />
         </video>
         <div className="absolute z-10 inset-0 flex flex-col text-wrap flex-wrap items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-3xl font-bold p-5 text-white text-center md:text-5xl lg:text-6xl">
+          <h1 className="text-3xl font-regular p-5 text-white text-center md:text-5xl lg:text-6xl">
             Organize seus estudos com a{" "}
-            <span className="font-extrabold">GoClass</span>
+            <span className="font-bold">GoClass</span>
           </h1>
           <div className="flex mt-4 space-x-4 md:mt-6 lg:mt-8">
-            <Button className="bg-blue-600 text-white hover:bg-blue-700 rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
+            <Button className="bg-primary text-white hover:bg-primary rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
               Ver planos
             </Button>
-            <Button className="bg-white text-blue-600 hover:bg-gray-100 rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
+            <Button className="bg-white text-primary hover:bg-gray-100 rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
               <NavLink to="/login">Já é cadastrado?</NavLink>
             </Button>
           </div>
