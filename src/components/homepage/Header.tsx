@@ -31,7 +31,7 @@ const Header = () => {
           </h1>
           <div className="flex mt-4 space-x-4 md:mt-6 lg:mt-8">
             <Button className="bg-primary text-white hover:bg-primary rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
-              Ver planos
+              <a href="#plans">Ver planos</a>
             </Button>
             <Button className="bg-white text-primary hover:bg-gray-100 rounded-full md:px-6 md:py-3 lg:px-8 lg:py-4">
               <NavLink to="/login">Já é cadastrado?</NavLink>

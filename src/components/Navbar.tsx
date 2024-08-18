@@ -41,17 +41,17 @@ const Navbar = () => {
         </NavLink>
         <nav className="hidden items-center gap-4 md:flex">
           <NavLink
-            to="#top"
+            to="/"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
           >
             Início
           </NavLink>
-          <NavLink
-            to="#plans"
+          <a
+            href="#plans"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
           >
             Planos
-          </NavLink>
+          </a>
           <NavLink
             to="#partners"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
