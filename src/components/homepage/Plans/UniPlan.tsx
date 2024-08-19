@@ -55,7 +55,7 @@ const UniPlan = () => {
                 </Badge>
               </TabsTrigger>
             </TabsList>
-            <TabsContent className="space-y-4" value="mensal">
+            <TabsContent className="space-y-4 flex flex-col gap-2" value="mensal">
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -94,7 +94,7 @@ const UniPlan = () => {
                 </Button>
               </NavLink>
             </TabsContent>
-            <TabsContent className="space-y-4" value="semestral">
+            <TabsContent className="space-y-4 flex flex-col gap-2" value="semestral">
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -138,7 +138,7 @@ const UniPlan = () => {
                 </Button>
               </NavLink>
             </TabsContent>
-            <TabsContent className="space-y-4" value="anual">
+            <TabsContent className="space-y-4 flex flex-col gap-2" value="anual">
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
