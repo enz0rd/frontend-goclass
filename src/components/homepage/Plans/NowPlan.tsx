@@ -10,17 +10,9 @@ import {
 } from "../../ui/card";
 import { Badge } from "../../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { MouseEventHandler } from "react";
 import { NavLink } from "react-router-dom";
 
 const NowPlan = () => {
-  const handlePlanClick: MouseEventHandler<HTMLButtonElement> = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const plan = event.currentTarget.dataset.plan; // Use 'currentTarget' instead of 'target'
-    if (plan) {
-      window.location.href = '/register?plan=Now&type=' + plan;
-    }
-  };
 
   return (
     <div>
@@ -185,7 +177,7 @@ const NowPlan = () => {
                 </span>
               </div>
               <NavLink to='/register?plan=Now&type=Anual' onClick={() => window.scrollTo(0, 0)}>
-                <Button onClick={handlePlanClick} data-plan='Anual' className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
+                <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
                   Assinar
                 </Button>
               </NavLink>
