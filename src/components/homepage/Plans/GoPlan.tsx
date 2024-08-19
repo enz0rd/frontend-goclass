@@ -10,18 +10,10 @@ import {
 } from "../../ui/card";
 import { Badge } from "../../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { MouseEventHandler } from "react";
+import { NavLink } from "react-router-dom";
 
 
 const NowPlan = () => {
-  const handlePlanClick: MouseEventHandler<HTMLButtonElement> = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const plan = event.currentTarget.dataset.plan; // Use 'currentTarget' instead of 'target'
-    if (plan) {
-      window.location.href = '/register?plan=Go&type=' + plan;
-    }
-  };
-  
   return (
     <div>
       <div className="justify-center align-center my-auto rounded-3xl h-[100%] bg-gradient-to-b dark:from-zinc-700 dark:to-zinc-800 from-zinc-100 to-zinc-200 text-primary-foreground">
@@ -96,9 +88,11 @@ const NowPlan = () => {
                   /mês
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan="Mensal" className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Go&type=Mensal' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
             <TabsContent className="space-y-4" value="semestral">
               <ul className="group text-zinc-900 font-medium dark:text-zinc-50 space-y-2 text-primary-foreground">
@@ -138,9 +132,11 @@ const NowPlan = () => {
                   /6 meses
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan='Semestral' className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Go&type=Semestral' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
             <TabsContent className="space-y-4" value="anual">
               <ul className="group text-zinc-900 font-medium dark:text-zinc-50 space-y-2 text-primary-foreground">
@@ -180,9 +176,11 @@ const NowPlan = () => {
                   /ano
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan='Anual' className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Go&type=Anual' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
           </Tabs>
         </CardContent>

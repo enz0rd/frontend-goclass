@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
 
 const Footer = () => {
+  const linktree = '';
   return (
     <footer className="fixed-bottom h-fit pt-[2rem] pb-[4rem] bg-zinc-200 dark:bg-zinc-800">
       <div className="container mx-auto grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 lg:space-x-9 md:space-x-9 sm:space-x-0 lg:space-y-0 md:space-y-0 sm:space-y-2 h-[90%] sm:grid-rows-3 md:grid-rows-1 lg:grid-rows-1">
@@ -59,7 +60,7 @@ const Footer = () => {
             <li>
               <a
                 className="m-auto w-full"
-                href="https://www.linktr.ee/goclass/"
+                href={linktree}
               >
                 <SiLinktree className="w-[2rem] h-[2rem] text-primary hover:scale-[125%] transition-[.5s] ease-in-out" />
               </a>

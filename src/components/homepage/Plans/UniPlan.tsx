@@ -9,16 +9,9 @@ import {
 } from "../../ui/card";
 import { Badge } from "../../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { MouseEventHandler } from "react";
+import { NavLink } from "react-router-dom";
 
 const UniPlan = () => {
-  const handlePlanClick: MouseEventHandler<HTMLButtonElement> = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const plan = event.currentTarget.dataset.plan; // Use 'currentTarget' instead of 'target'
-    if (plan) {
-      window.location.href = '/register?plan=Uni&type=' + plan;
-    }
-  };
 
   return (
     <div>
@@ -95,9 +88,11 @@ const UniPlan = () => {
                   /mês
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan='Mensal' className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Uni&type=Mensal' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
             <TabsContent className="space-y-4" value="semestral">
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
@@ -137,9 +132,11 @@ const UniPlan = () => {
                   /6 meses
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan='Semestral' className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Uni&type=Semestral' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
             <TabsContent className="space-y-4" value="anual">
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
@@ -179,9 +176,11 @@ const UniPlan = () => {
                   /ano
                 </span>
               </div>
-              <Button onClick={handlePlanClick} data-plan='Anual' className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
-                Assinar
-              </Button>
+              <NavLink to='/register?plan=Uni&type=Anual' onClick={() => window.scrollTo(0, 0)}>
+                <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
             </TabsContent>
           </Tabs>
         </CardContent>

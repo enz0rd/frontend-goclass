@@ -23,7 +23,7 @@ const RegistrationForm = () => {
   const plan = params.get("plan");
   const type = params.get("type");
 
-  if (type === undefined || type === undefined) window.location.href = '/'
+  if (type === undefined || plan === undefined) window.location.href = '/'
 
   return (
     <div className="mx-[20%] group dark:text-zinc-50 mt-[50%] mb-[50%] lg:mx-auto md:mx-auto lg:mt-[10%] md:mt-[10%] max-w-2xl space-y-6 py-12">

@@ -43,14 +43,14 @@ const Navbar = () => {
         {window.location.pathname === '/' ? (
                 <a
                   href="#top"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Início
                 </a>
               ) : (
                 <a
                   href="/"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Início
                 </a>
@@ -58,14 +58,14 @@ const Navbar = () => {
           {window.location.pathname === '/' ? (
                 <a
                   href="#plans"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Planos
                 </a>
               ) : (
                 <a
                   href="/#plans"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Planos
                 </a>
@@ -145,14 +145,14 @@ const Navbar = () => {
               {window.location.pathname === '/' ? (
                 <NavLink
                   to="/"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className=" dark:text-zinc-50text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Início
                 </NavLink>
               ) : (
                 <a
                   href="/"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className=" dark:text-zinc-50text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Início
                 </a>
@@ -160,14 +160,14 @@ const Navbar = () => {
               {window.location.pathname === '/' ? (
                 <a
                   href="#plans"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className=" dark:text-zinc-50text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Planos
                 </a>
               ) : (
                 <a
                   href="/#plans"
-                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                  className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
                 >
                   Planos
                 </a>
