@@ -4,7 +4,7 @@ import { Input } from '../ui/input';
 const CNPJInput = () => {
   const [cnpj, setCnpj] = useState('');
 
-  const handleInputChange = (e) => {
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
     let formattedValue = '';
 
