@@ -1,11 +1,14 @@
-import { NavLink } from "react-router-dom";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import RegistrationForm from "@/components/registerpage/RegistrationForm";
 
 const RegisterPage = () => {
     return (
-        <>
-            <NavLink to="/" className="bg-zinc-800 w-[20rem]">b</NavLink>
-            <input type="text" className="w-20" placeholder="teste"></input>
-        </>
+        <div className="dark:bg-zinc-900">
+            <Navbar />
+            <RegistrationForm />
+            <Footer />
+        </div>
     );
 }
 

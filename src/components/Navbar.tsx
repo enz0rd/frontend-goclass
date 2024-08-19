@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="z-[20] w-full sticky top-0 bg-zinc-50 dark:bg-zinc-900 shadow">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <NavLink to="#" className="flex items-center gap-2">
+        <NavLink to="/" className="flex items-center gap-2">
           <img
             src={isDarkTheme ? darkLogo : lightLogo}
             className="h-10 w-15 bg-cover bg-center"
@@ -40,18 +40,36 @@ const Navbar = () => {
           <span className="text-lg font-bold text-primary">GoClass</span>
         </NavLink>
         <nav className="hidden items-center gap-4 md:flex">
-          <NavLink
-            to="/"
-            className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
-          >
-            Início
-          </NavLink>
-          <a
-            href="#plans"
-            className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
-          >
-            Planos
-          </a>
+        {window.location.pathname === '/' ? (
+                <a
+                  href="#top"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Início
+                </a>
+              ) : (
+                <a
+                  href="/"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Início
+                </a>
+              )}
+          {window.location.pathname === '/' ? (
+                <a
+                  href="#plans"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Planos
+                </a>
+              ) : (
+                <a
+                  href="/#plans"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Planos
+                </a>
+              )}
           <NavLink
             to="#partners"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
@@ -124,18 +142,36 @@ const Navbar = () => {
               <SheetClose></SheetClose>
             </div>
             <nav className="flex flex-col justify-center gap-5">
-              <NavLink
-                to="#top"
-                className="text-sm font-medium hover:underline hover:underline-offset-4"
-              >
-                Início
-              </NavLink>
-              <NavLink
-                to="#plans"
-                className="text-sm font-medium hover:underline hover:underline-offset-4"
-              >
-                Planos
-              </NavLink>
+              {window.location.pathname === '/' ? (
+                <NavLink
+                  to="/"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Início
+                </NavLink>
+              ) : (
+                <a
+                  href="/"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Início
+                </a>
+              )}
+              {window.location.pathname === '/' ? (
+                <a
+                  href="#plans"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Planos
+                </a>
+              ) : (
+                <a
+                  href="/#plans"
+                  className="text-sm font-medium hover:underline hover:underline-offset-4"
+                >
+                  Planos
+                </a>
+              )}
               <NavLink
                 to="#partners"
                 className="text-sm font-medium hover:underline hover:underline-offset-4"
