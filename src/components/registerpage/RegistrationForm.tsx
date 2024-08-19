@@ -6,11 +6,8 @@ import { useLocation } from "react-router-dom"
 import CNPJInput from "./CNPJInput"
 
 const RegistrationForm = () => {
-    const [step, setStep] = useState(1)
+  const [step, setStep] = useState(1)
   const [isDirector, setIsDirector] = useState(1)
-  const [institutionName, setInstitutionName] = useState("")
-  const [institutionAddress, setInstitutionAddress] = useState("")
-  const [institutionPhone, setInstitutionPhone] = useState("")
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -20,45 +17,22 @@ const RegistrationForm = () => {
   const handlePrevious = () => {
     setStep(step - 1)
   }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({
-      isDirector,
-      institutionName,
-      institutionAddress,
-      institutionPhone,
-      name,
-      email,
-      password,
-    })
-  }
-
-  const [cnpj, setCNPJ] = useState('');
-  const formatCNPJ = (value) => {
-    // Remove all non-numeric characters
-    const cleanedValue = value.replace(/\D/g, '');
-
-    // Apply the CNPJ format
-    let formattedValue = cleanedValue.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-
-    return formattedValue;
-}
 
   const location = useLocation();
-    const params = new URLSearchParams(location.search);
-    const plan = params.get("plan");
-    const type = params.get("type");
+  const params = new URLSearchParams(location.search);
+  const plan = params.get("plan");
+  const type = params.get("type");
 
   if (type === undefined || type === undefined) window.location.href = '/'
 
   return (
     <div className="mx-[20%] group dark:text-zinc-50 mt-[50%] mb-[50%] lg:mx-auto md:mx-auto lg:mt-[10%] md:mt-[10%] max-w-2xl space-y-6 py-12">
-        <h1>Você escolheu o plano: {plan + ' ' + type}</h1>
+      <h1>Você escolheu o plano: {plan + ' ' + type}</h1>
       {step === 1 && (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">Você é diretor/gestor de uma instituição de ensino?</h2>
           <div className="flex gap-4">
-            <Button variant={isDirector == 2 ? "default" : "outline"} className={isDirector === 2 ? 'text-zinc-50' : 'dark:bg-zinc-400 dark:text-zinc-900'}  onClick={() => setIsDirector(2)}>
+            <Button variant={isDirector == 2 ? "default" : "outline"} className={isDirector === 2 ? 'text-zinc-50' : 'dark:bg-zinc-400 dark:text-zinc-900'} onClick={() => setIsDirector(2)}>
               Sim
             </Button>
             <Button variant={isDirector == 3 ? "default" : "outline"} className={isDirector === 3 ? 'text-zinc-50' : 'dark:bg-zinc-400 dark:text-zinc-900'} onClick={() => setIsDirector(3)}>
@@ -67,19 +41,19 @@ const RegistrationForm = () => {
           </div>
           {isDirector == 3 && (
             <>
-                <p className="text-muted-foreground">
-                Solicite a inscrição à sua instituição de ensino para utilizar a plataforma. 
-                </p>
-                <p className="text-muted-foreground">
+              <p className="text-muted-foreground">
+                Solicite a inscrição à sua instituição de ensino para utilizar a plataforma.
+              </p>
+              <p className="text-muted-foreground">
                 A sua instituição de ensino já possui cadastro? Solicite o link de cadastro gerado no perfil da instituição.
-                </p>
+              </p>
             </>
           )}
           {isDirector == 2 && <Button className='text-zinc-50' onClick={handleNext}>Próximo passo</Button>}
         </div>
       )}
       {step === 2 && (
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={(e) => { e.preventDefault(); console.log("submit 1"); }} className="space-y-4">
           <h2 className="text-2xl font-bold">Dados da Instituição de Ensino</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
@@ -126,7 +100,7 @@ const RegistrationForm = () => {
         </form>
       )}
       {step === 3 && (
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={(e) => { e.preventDefault(); console.log("submit"); }} className="space-y-4">
           <h2 className="text-2xl font-bold">Personal Details</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
