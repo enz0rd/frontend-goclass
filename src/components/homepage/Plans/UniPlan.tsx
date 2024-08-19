@@ -86,7 +86,7 @@ const UniPlan = () => {
                   /mês
                 </span>
               </div>
-              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-primary/90">
+              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
                 Assinar
               </Button>
             </TabsContent>
@@ -128,7 +128,7 @@ const UniPlan = () => {
                   /6 meses
                 </span>
               </div>
-              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-primary/90">
+              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
                 Assinar
               </Button>
             </TabsContent>
@@ -170,7 +170,7 @@ const UniPlan = () => {
                   /ano
                 </span>
               </div>
-              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-primary/90">
+              <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
                 Assinar
               </Button>
             </TabsContent>

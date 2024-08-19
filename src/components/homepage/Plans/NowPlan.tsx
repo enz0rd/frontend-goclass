@@ -71,8 +71,8 @@ const NowPlan = () => {
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de atividades
                 </li>
-                <li className="opacity-[75%]">
-                  <IoClose className="mr-2 inline-block h-4 w-4" />
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de desempenho
                 </li>
                 <li className="opacity-[75%]">
@@ -108,8 +108,8 @@ const NowPlan = () => {
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de atividades
                 </li>
-                <li className="opacity-[75%]">
-                  <IoClose className="mr-2 inline-block h-4 w-4" />
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de desempenho
                 </li>
                 <li className="opacity-[75%]">
@@ -150,8 +150,8 @@ const NowPlan = () => {
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de atividades
                 </li>
-                <li className="opacity-[75%]">
-                  <IoClose className="mr-2 inline-block h-4 w-4" />
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
                   Relatório de desempenho
                 </li>
                 <li className="opacity-[75%]">

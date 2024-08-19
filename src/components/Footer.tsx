@@ -18,8 +18,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#plans" className="font-medium dark:text-zinc-50">
-                Planos
+              <a href={window.location.pathname === '/' ? '#plans' : '/#plans'} className="font-medium dark:text-zinc-50">
+                  Planos
               </a>
             </li>
             <li>
@@ -67,8 +67,8 @@ const Footer = () => {
           </ul>
         </div>
         <div className="col-span-1 bg-zinc-800 rounded-2xl ">
-          <div className="flex flex-row justify-center  mx-auto h-full w-full">
-            <img className="w-[15rem]" src={darkLogo} alt="Logo Goclass" />
+          <div className="flex flex-row justify-center lg:mt-0 md:mt-0 mt-4 mx-auto h-full w-full">
+            <img className="w-[15rem] object-contain" src={darkLogo} alt="Logo Goclass" />
           </div>
         </div>
       </div>
