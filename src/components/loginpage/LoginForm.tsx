@@ -113,7 +113,6 @@ const LoginForm = () => {
                     ) : (
                         <Button id='login-button' className="w-full bg-primary text-primary-foreground hover:bg-zinc-50 hover:text-primary">Entrar</Button>
                     )}
-                    <NavLink to='/register' className='font-regular dark:text-zinc-50'>Não tem uma conta? <span className="hover:text-primary">Registrar-se</span></NavLink>
                 </div>
             </form>
         </div>
