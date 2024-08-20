@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input } from '../ui/input';
 
-const CPFInput = () => {
+const CPFInput = ({ id, name }: { id: string, name: string }) => {
   const [CPF, setCPF] = useState('');
 
   const formatCPF = (value: string) => {
@@ -27,6 +27,8 @@ const CPFInput = () => {
 
   return (
     <Input
+      id={id}
+      name={name}
       type="text"
       value={CPF}
       onChange={handleInputChange}

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Input } from '../ui/input';
 
-const CNPJInput = () => {
-  const [cnpj, setCnpj] = useState('');
+const CNPJInput = ({ id, name }: { id: string, name: string }) => {
+  const [cnpj, setCnpj] = useState<string>('');
 
 const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
@@ -29,14 +29,19 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   };
 
   return (
-    <Input
-      type="text"
-      value={cnpj}
-      onChange={handleInputChange}
-      maxLength={18}
-      placeholder="00.000.000/0000-00"
-      required
-    />
+    <>
+      <Input
+        id={id}
+        name={name}
+        type="text"
+        value={cnpj}
+        onChange={handleInputChange}
+        maxLength={18}
+        minLength={18}
+        placeholder="00.000.000/0000-00"
+        required
+      />
+    </>
   );
 };
 
