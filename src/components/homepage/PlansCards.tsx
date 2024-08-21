@@ -23,19 +23,19 @@ const PlansCards = () => {
           // Converta os valores de string para número
           const convertedData: PlansResponse = {
             uni: {
-              anual: data.uni.anual.replace(".", ","),
-              semestral: data.uni.semestral.replace(".", ","),
-              mensal: data.uni.mensal.replace(".", ","),
+              anual: data.uni.anual,
+              semestral: data.uni.semestral,
+              mensal: data.uni.mensal,
             },
             now: {
-              anual: data.now.anual.replace(".", ","),
-              semestral: data.now.semestral.replace(".", ","),
-              mensal: data.now.mensal.replace(".", ","),
+              anual: data.now.anual,
+              semestral: data.now.semestral,
+              mensal: data.now.mensal,
             },
             go: {
-              anual: data.go.anual.replace(".", ","),
-              semestral: data.go.semestral.replace(".", ","),
-              mensal: data.go.mensal.replace(".", ","),
+              anual: data.go.anual,
+              semestral: data.go.semestral,
+              mensal: data.go.mensal,
             },
           };
 
