@@ -36,8 +36,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/success" element={<SuccessPage />} />
-            <Route path="/cancel" element={<CancelPage />} />
+            <Route path="/register/success" element={<SuccessPage />} />
+            <Route path="/register/cancel" element={<CancelPage />} />
           </Routes>
         </motion.div>
       )}

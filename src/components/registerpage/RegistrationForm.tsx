@@ -21,6 +21,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import api from "@/axiosconfig";
 // import api from "@/axiosconfig";
 
 const RegisterSchema = z.object({
@@ -73,7 +74,7 @@ const RegisterSchema = z.object({
         message: "O CNPJ deve conter apenas números.",
       })
       .optional(),
-    password: z
+    senha: z
       .string()
       .refine(
         (value) =>
@@ -132,15 +133,29 @@ const RegistrationForm = () => {
   };
 
   // REQUEST DE CHECKOUT
-  const requestdata = {
-    price_lookup: (plan + "-" + type).toLowerCase(),
+  const subscription = {
+    lookupKey: (plan + "-" + type).toLowerCase(),
+    successUrl: window.location.origin + window.location.pathname + "/success", // Alterado para incluir a URL completa
+    cancelUrl: window.location.origin + window.location.pathname + "/cancel", // Alterado para incluir a URL completa
   };
 
   // Request de checkout: criação do checkout
   const handleCreateCheckout = async (data: RegistrationType) => {
     setLoadingButton(true);
-    console.log(requestdata);
-    console.log(data);
+    var requestData = {
+      ...data,
+      subscription: {}
+    }
+    requestData.subscription = subscription; // Alterado para usar a notação de ponto
+    console.log(requestData);
+    console.log(requestData.user.senha)
+    const resp = await api.post('/subscription/create', requestData);
+
+    if (resp.status === 200) {
+      window.location.href = resp.data.url;
+    } else {
+      setLoadingButton(false);
+    }
   };
 
   return (
@@ -425,18 +440,18 @@ const RegistrationForm = () => {
                 </TooltipProvider>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="user-password">Senha</Label>
+                <Label htmlFor="user-senha">Senha</Label>
                 <Input
                   placeholder="********"
-                  id="user-password"
+                  id="user-senha"
                   maxLength={100}
                   type="password"
                   required
-                  {...register("user.password")}
+                  {...register("user.senha")}
                 />
-                {errors.user?.password ? (
+                {errors.user?.senha ? (
                   <span className="text-red-600 text-xs">
-                    {errors.user.password.message}
+                    {errors.user.senha.message}
                   </span>
                 ) : null}
               </div>

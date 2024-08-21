@@ -80,7 +80,7 @@ const LoginForm = () => {
                         id="email"
                         type="email"
                         placeholder="seu@email.com"
-                        className="border-primary focus:border-primary-foreground focus:ring-primary"
+                        className="border-primary dark:text-zinc-50 focus:border-primary-foreground focus:ring-primary"
                         {...register('email')}
                     />
                     {errors.email ? <span className="text-red-600">{errors.email.message}</span> : null}
@@ -93,7 +93,7 @@ const LoginForm = () => {
                         id="senha"
                         type="password"
                         placeholder="********"
-                        className="border-primary focus:border-primary-foreground focus:ring-primary"
+                        className="border-primary dark:text-zinc-50 focus:border-primary-foreground focus:ring-primary"
                         {...register('senha')}
                     />
                     {errors.senha ? <span className="text-red-600">{errors.senha.message}</span> : null}
