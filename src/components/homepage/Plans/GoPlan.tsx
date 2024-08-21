@@ -101,11 +101,11 @@ const GoPlan = ({ prices }: { prices: Record<string, string> }) => {
                     <span className="text-4xl font-bold">
                       R${prices?.mensal}
                     </span>
-                    <span className="text-primary-foreground text-sm text-zinc-200">
-                      /mês
-                    </span>
                   </>
                 )}
+                <span className="text-primary-foreground text-sm text-zinc-200">
+                  /mês
+                </span>
               </div>
               <NavLink
                 to="/register?plan=Go&type=Mensal"
@@ -147,21 +147,23 @@ const GoPlan = ({ prices }: { prices: Record<string, string> }) => {
                 </li>
               </ul>
               <div className="group text-zinc-900 dark:text-zinc-50 flex items-end justify-between">
-                {loading ? (
-                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
-                ) : (
-                  <>
-                    <span className="text-4xl font-bold">
-                      R${prices?.semestral}
-                    </span>
-                    <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
-                      <DiscountIcon className="w-3" /> 15% off
-                    </Badge>
-                    <span className="text-primary-foreground text-sm text-zinc-200">
-                      /6 meses
-                    </span>
-                  </>
-                )}
+                <div className="flex flex-row justify-center gap-2">
+                  {loading ? (
+                    <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-bold">
+                        R${prices?.semestral}
+                      </span>
+                      <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                        <DiscountIcon className="w-3" /> 15% off
+                      </Badge>
+                    </>
+                  )}
+                </div>
+                <span className="text-primary-foreground text-sm text-zinc-200">
+                  /6 meses
+                </span>
               </div>
               <NavLink
                 to="/register?plan=Go&type=Semestral"
@@ -203,18 +205,20 @@ const GoPlan = ({ prices }: { prices: Record<string, string> }) => {
                 </li>
               </ul>
               <div className="group text-zinc-900 dark:text-zinc-50 flex items-end justify-between">
-                {loading ? (
-                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
-                ) : (
-                  <>
-                    <span className="text-4xl font-bold">
-                      R${prices?.anual}
-                    </span>
-                    <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
-                      <DiscountIcon className="w-3" /> 30% off
-                    </Badge>
-                  </>
-                )}
+                <div className="flex flex-row justify-center gap-2">
+                  {loading ? (
+                    <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-bold">
+                        R${prices?.anual}
+                      </span>
+                      <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                        <DiscountIcon className="w-3" /> 30% off
+                      </Badge>
+                    </>
+                  )}
+                </div>
                 <span className="text-primary-foreground text-sm text-zinc-200">
                   /ano
                 </span>
