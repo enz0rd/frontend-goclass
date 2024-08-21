@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import RegisterPage from "@/pages/RegisterPage";
 import { AnimatePresence, motion } from "framer-motion";
 import Preloader from "@/components/PreLoader";
-import SuccessPage from "./pages/SuccessPage";
-import CancelPage from "./pages/CancelPage";
+import SuccessPage from "@/pages/SuccessPage";
+import CancelPage from "@/pages/CancelPage";
 
 function App() {
   const location = useLocation();
