@@ -10,8 +10,16 @@ import {
 import { Badge } from "../../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const UniPlan = () => {
+const UniPlan = ({ prices }: { prices: Record<string, string> }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (prices) {
+      setLoading(false);
+    }
+  }, [prices]);
 
   return (
     <div>
@@ -55,7 +63,10 @@ const UniPlan = () => {
                 </Badge>
               </TabsTrigger>
             </TabsList>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="mensal">
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="mensal"
+            >
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -83,18 +94,88 @@ const UniPlan = () => {
                 </li>
               </ul>
               <div className="group dark:text-zinc-50 flex items-end justify-between">
-                <span className="text-4xl font-bold">R$299</span>
-                <span className="text-primary-foreground text-sm text-zinc-200">
-                  /mês
-                </span>
+                {loading ? (
+                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold">
+                      R${prices?.mensal}
+                    </span>
+                    <span className="text-primary-foreground text-sm text-zinc-200">
+                      /mês
+                    </span>
+                  </>
+                )}
               </div>
-              <NavLink to='/register?plan=Uni&type=Mensal' onClick={() => window.scrollTo(0, 0)}>
+              <NavLink
+                to="/register?plan=Uni&type=Mensal"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
                   Assinar
                 </Button>
               </NavLink>
             </TabsContent>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="semestral">
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="semestral"
+            >
+              <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Envio de atividades via plataforma
+                </li>
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Chat direto com instrutores
+                </li>
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Dashboard de desempenho
+                </li>
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Relatório de atividades
+                </li>
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Relatório de desempenho
+                </li>
+                <li>
+                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
+                  Divulgação de eventos internos
+                </li>
+              </ul>
+              <div className="group dark:text-zinc-50 flex items-end justify-between">
+                {loading ? (
+                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold">
+                      R${prices?.semestral}
+                    </span>
+                    <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                      <DiscountIcon className="w-3" /> 15% off
+                    </Badge>
+                    <span className="text-primary-foreground text-sm text-zinc-200">
+                      /6 meses
+                    </span>
+                  </>
+                )}
+              </div>
+              <NavLink
+                to="/register?plan=Uni&type=Semestral"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
+                  Assinar
+                </Button>
+              </NavLink>
+            </TabsContent>
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="anual"
+            >
               <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -123,60 +204,27 @@ const UniPlan = () => {
               </ul>
               <div className="group dark:text-zinc-50 flex items-end justify-between">
                 <div className="flex flex-row justify-center gap-2">
-                  <span className="text-4xl font-bold">R$1530</span>
-                  <Badge className="hover:bg-zinc-200 bg-zinc-50 justify-center p-1 h-5 text-primary my-auto rounded-full">
-                    <DiscountIcon className="w-3" /> 15% off
-                  </Badge>
-                </div>
-                <span className="text-primary-foreground text-sm text-zinc-200">
-                  /6 meses
-                </span>
-              </div>
-              <NavLink to='/register?plan=Uni&type=Semestral' onClick={() => window.scrollTo(0, 0)}>
-                <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
-                  Assinar
-                </Button>
-              </NavLink>
-            </TabsContent>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="anual">
-              <ul className="group dark:text-zinc-50 space-y-2 text-primary-foreground">
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Envio de atividades via plataforma
-                </li>
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Chat direto com instrutores
-                </li>
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Dashboard de desempenho
-                </li>
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Relatório de atividades
-                </li>
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Relatório de desempenho
-                </li>
-                <li>
-                  <CheckIcon className="mr-2 inline-block h-4 w-4" />
-                  Divulgação de eventos internos
-                </li>
-              </ul>
-              <div className="group dark:text-zinc-50 flex items-end justify-between">
-                <div className="flex flex-row justify-center gap-2">
-                  <span className="text-4xl font-bold">R$2500</span>
-                  <Badge className="hover:bg-zinc-200 bg-zinc-50 justify-center p-1 h-5 text-primary my-auto rounded-full">
-                    <DiscountIcon className="w-3" /> 30% off
-                  </Badge>
+                  {loading ? (
+                    <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-bold">
+                        R${prices?.anual}
+                      </span>
+                      <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                        <DiscountIcon className="w-3" /> 30% off
+                      </Badge>
+                    </>
+                  )}
                 </div>
                 <span className="text-primary-foreground text-sm text-zinc-200">
                   /ano
                 </span>
               </div>
-              <NavLink to='/register?plan=Uni&type=Anual' onClick={() => window.scrollTo(0, 0)}>
+              <NavLink
+                to="/register?plan=Uni&type=Anual"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Button className="w-full dark:bg-zinc-50 bg-primary-foreground dark:text-primary text-primary dark:hover:bg-zinc-300 hover:bg-zinc-300">
                   Assinar
                 </Button>

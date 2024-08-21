@@ -6,13 +6,13 @@ import RegisterPage from "./pages/RegisterPage";
 import { AnimatePresence, motion } from "framer-motion";
 import Preloader from "@/components/PreLoader";
 import SuccessPage from "./pages/SuccessPage";
+import CancelPage from "./pages/CancelPage";
 
 function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a loading delay
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -37,6 +37,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/success" element={<SuccessPage />} />
+            <Route path="/cancel" element={<CancelPage />} />
           </Routes>
         </motion.div>
       )}

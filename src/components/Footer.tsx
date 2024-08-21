@@ -1,10 +1,13 @@
 import darkLogo from "@/assets/Logos/GoclassLogo-hat-light.png";
+import lightLogo from "@/assets/Logos/GoclassLogo-hat-dark.png";
 import { NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa6";
 import { SiLinktree } from "react-icons/si";
+import { useTheme } from "@/ThemeProvider";
 
 const Footer = () => {
-  const linktree = '';
+  const { isDarkMode } = useTheme();
+  const linktree = "";
   return (
     <footer className="fixed-bottom h-fit pt-[2rem] pb-[4rem] bg-zinc-200 dark:bg-zinc-800">
       <div className="container mx-auto grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 lg:space-x-9 md:space-x-9 sm:space-x-0 lg:space-y-0 md:space-y-0 sm:space-y-2 h-[90%] sm:grid-rows-3 md:grid-rows-1 lg:grid-rows-1">
@@ -19,8 +22,11 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href={window.location.pathname === '/' ? '#plans' : '/#plans'} className="font-medium dark:text-zinc-50">
-                  Planos
+              <a
+                href={window.location.pathname === "/" ? "#plans" : "/#plans"}
+                className="font-medium dark:text-zinc-50"
+              >
+                Planos
               </a>
             </li>
             <li>
@@ -58,18 +64,19 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a
-                className="m-auto w-full"
-                href={linktree}
-              >
+              <a className="m-auto w-full" href={linktree}>
                 <SiLinktree className="w-[2rem] h-[2rem] text-primary hover:scale-[125%] transition-[.5s] ease-in-out" />
               </a>
             </li>
           </ul>
         </div>
-        <div className="col-span-1 bg-zinc-800 rounded-2xl ">
+        <div className="col-span-1 rounded-2xl ">
           <div className="flex flex-row justify-center lg:mt-0 md:mt-0 mt-4 mx-auto h-full w-full">
-            <img className="w-[15rem] object-contain" src={darkLogo} alt="Logo Goclass" />
+            <img
+              className="w-[15rem] object-contain"
+              src={isDarkMode ? darkLogo : lightLogo}
+              alt="Logo Goclass"
+            />
           </div>
         </div>
       </div>

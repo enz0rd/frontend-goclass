@@ -11,9 +11,17 @@ import {
 import { Badge } from "../../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+const GoPlan = ({ prices }: { prices: Record<string, string> }) => {
+  const [loading, setLoading] = useState(true);
 
-const NowPlan = () => {
+  useEffect(() => {
+    if (prices) {
+      setLoading(false);
+    }
+  }, [prices]);
+
   return (
     <div>
       <div className="justify-center align-center my-auto rounded-3xl h-[100%] bg-gradient-to-b dark:from-zinc-700 dark:to-zinc-800 from-zinc-100 to-zinc-200 text-primary-foreground">
@@ -55,7 +63,10 @@ const NowPlan = () => {
                 </Badge>
               </TabsTrigger>
             </TabsList>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="mensal">
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="mensal"
+            >
               <ul className="group font-medium text-zinc-900 dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -83,18 +94,32 @@ const NowPlan = () => {
                 </li>
               </ul>
               <div className="group text-zinc-900 dark:text-zinc-50 flex items-end justify-between">
-                <span className="text-4xl font-bold">R$109</span>
-                <span className="text-primary-foreground text-sm text-zinc-800 dark:text-zinc-200">
-                  /mês
-                </span>
+                {loading ? (
+                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold">
+                      R${prices?.mensal}
+                    </span>
+                    <span className="text-primary-foreground text-sm text-zinc-200">
+                      /mês
+                    </span>
+                  </>
+                )}
               </div>
-              <NavLink to='/register?plan=Go&type=Mensal' onClick={() => window.scrollTo(0, 0)}>
+              <NavLink
+                to="/register?plan=Go&type=Mensal"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
                   Assinar
                 </Button>
               </NavLink>
             </TabsContent>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="semestral">
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="semestral"
+            >
               <ul className="group text-zinc-900 font-medium dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -122,23 +147,35 @@ const NowPlan = () => {
                 </li>
               </ul>
               <div className="group text-zinc-900 dark:text-zinc-50 flex items-end justify-between">
-                <div className="flex flex-row justify-center gap-2">
-                  <span className="text-4xl font-bold">R$559</span>
-                  <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
-                    <DiscountIcon className="w-3" /> 15% off
-                  </Badge>
-                </div>
-                <span className="text-primary-foreground text-sm text-zinc-800 dark:text-zinc-200">
-                  /6 meses
-                </span>
+                {loading ? (
+                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold">
+                      R${prices?.semestral}
+                    </span>
+                    <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                      <DiscountIcon className="w-3" /> 15% off
+                    </Badge>
+                    <span className="text-primary-foreground text-sm text-zinc-200">
+                      /6 meses
+                    </span>
+                  </>
+                )}
               </div>
-              <NavLink to='/register?plan=Go&type=Semestral' onClick={() => window.scrollTo(0, 0)}>
+              <NavLink
+                to="/register?plan=Go&type=Semestral"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
                   Assinar
                 </Button>
               </NavLink>
             </TabsContent>
-            <TabsContent className="space-y-4 flex flex-col gap-2" value="anual">
+            <TabsContent
+              className="space-y-4 flex flex-col gap-2"
+              value="anual"
+            >
               <ul className="group text-zinc-900 font-medium dark:text-zinc-50 space-y-2 text-primary-foreground">
                 <li>
                   <CheckIcon className="mr-2 inline-block h-4 w-4" />
@@ -166,17 +203,26 @@ const NowPlan = () => {
                 </li>
               </ul>
               <div className="group text-zinc-900 dark:text-zinc-50 flex items-end justify-between">
-                <div className="flex flex-row justify-center gap-2">
-                  <span className="text-4xl font-bold">R$924</span>
-                  <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
-                    <DiscountIcon className="w-3" /> 30% off
-                  </Badge>
-                </div>
-                <span className="text-primary-foreground text-sm text-zinc-800 dark:text-zinc-200">
+                {loading ? (
+                  <div className="animate-pulse bg-zinc-300 dark:bg-zinc-700 h-8 w-24 rounded-lg"></div>
+                ) : (
+                  <>
+                    <span className="text-4xl font-bold">
+                      R${prices?.anual}
+                    </span>
+                    <Badge className="hover:bg-zinc-200 bg-primary dark:bg-zinc-50 justify-center p-1 h-5 font-medium dark:text-primary text-zinc-50 my-auto rounded-full">
+                      <DiscountIcon className="w-3" /> 30% off
+                    </Badge>
+                  </>
+                )}
+                <span className="text-primary-foreground text-sm text-zinc-200">
                   /ano
                 </span>
               </div>
-              <NavLink to='/register?plan=Go&type=Anual' onClick={() => window.scrollTo(0, 0)}>
+              <NavLink
+                to="/register?plan=Go&type=Anual"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <Button className="w-full bg-zinc-900 dark:bg-zinc-50 dark:text-primary text-zinc-50 hover:bg-zinc-700 dark:hover:bg-zinc-300">
                   Assinar
                 </Button>
@@ -189,4 +235,4 @@ const NowPlan = () => {
   );
 };
 
-export default NowPlan;
+export default GoPlan;
