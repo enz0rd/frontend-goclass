@@ -14,8 +14,8 @@ const SuccessPage = () => {
   const { isDarkMode } = useTheme();
   const urlParams = new URLSearchParams(window.location.search);
   const sessionId = urlParams.get("sessionId");
-  const userId = urlParams.get("id_user");
-  const institutionId = urlParams.get("id_institution");
+  const userId = urlParams.get("userId");
+  const institutionId = urlParams.get("institutionId");
 
   if (sessionId === null) {
     // console.log(sessionId);
