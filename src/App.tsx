@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Preloader from "@/components/PreLoader";
 import SuccessPage from "@/pages/SuccessPage";
 import CancelPage from "@/pages/CancelPage";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   const location = useLocation();
@@ -38,6 +39,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/register/success" element={<SuccessPage />} />
             <Route path="/register/cancel" element={<CancelPage />} />
+            <Route path='/dashboard' element={<DashboardPage />} />
           </Routes>
         </motion.div>
       )}
