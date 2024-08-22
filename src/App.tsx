@@ -25,7 +25,7 @@ function App() {
       {loading ? (
         <Preloader key="preloader" />
       ) : (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><Preloader /></div>}>
           <motion.div
             style={{
               width: "100%",

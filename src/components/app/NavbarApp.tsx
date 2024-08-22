@@ -25,6 +25,7 @@ const NavbarApp = ({ data }: { data: Record<string, string> }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
+    window.location.href = '/login';
   }
 
   return (
@@ -99,13 +100,13 @@ const NavbarApp = ({ data }: { data: Record<string, string> }) => {
                 >
                   Sobre Nós
                 </NavLink>
-                <NavLink
-                  to="/login"
+                <a
+                  href="/login"
                   onClick={handleLogout}
                   className="cursor-pointer text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
                 >
                   Sair
-                </NavLink>
+                </a>
                 <div className="grid gap-2">
                   <div className="flex flex-row w-full gap-5">
                     <div className="flex flex-col gap-1">
@@ -204,13 +205,13 @@ const NavbarApp = ({ data }: { data: Record<string, string> }) => {
                 >
                   Sobre Nós
                 </NavLink>
-                <NavLink
-                  to="/login"
+                <a
+                  href="/login"
                   onClick={handleLogout}
                   className="cursor-pointer text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
                 >
                   Sair
-                </NavLink>
+                </a>
                 <div className="grid gap-2">
                     <Toggle
                       id="theme"
