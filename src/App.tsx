@@ -23,7 +23,8 @@ function App() {
   return (
     <AnimatePresence mode="wait">
       {loading ? (
-        <Preloader key="preloader" />
+        <></>
+        // <Preloader key="preloader" />
       ) : (
         <Suspense fallback={<div><Preloader /></div>}>
           <motion.div
