@@ -23,30 +23,27 @@ function App() {
   return (
     <AnimatePresence mode="wait">
       {loading ? (
-        <></>
-        // <Preloader key="preloader" />
+        <Preloader key="preloader" />
       ) : (
-        <Suspense fallback={<div><Preloader /></div>}>
-          <motion.div
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/register/success" element={<SuccessPage />} />
-              <Route path="/register/cancel" element={<CancelPage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-            </Routes>
-          </motion.div>
-        </Suspense>
+        <motion.div
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/register/success" element={<SuccessPage />} />
+            <Route path="/register/cancel" element={<CancelPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Routes>
+        </motion.div>
       )}
     </AnimatePresence>
   );
