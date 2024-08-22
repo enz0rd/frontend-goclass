@@ -21,11 +21,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 const NavbarApp = ({ data }: { data: Record<string, string> }) => {
   const { isDarkMode, toggleTheme } = useTheme(); // Access the theme context
   const nomeInst = data.data
-  const nomeUsuario = 'Usuário'
+  const nomeUsuario = data.user_name
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
-    window.location.href = '/login';
   }
 
   return (
@@ -100,12 +99,13 @@ const NavbarApp = ({ data }: { data: Record<string, string> }) => {
                 >
                   Sobre Nós
                 </NavLink>
-                <a
+                <NavLink
+                  to="/login"
                   onClick={handleLogout}
                   className="cursor-pointer text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
                 >
                   Sair
-                </a>
+                </NavLink>
                 <div className="grid gap-2">
                   <div className="flex flex-row w-full gap-5">
                     <div className="flex flex-col gap-1">
@@ -204,12 +204,13 @@ const NavbarApp = ({ data }: { data: Record<string, string> }) => {
                 >
                   Sobre Nós
                 </NavLink>
-                <a
+                <NavLink
+                  to="/login"
                   onClick={handleLogout}
                   className="cursor-pointer text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
                 >
                   Sair
-                </a>
+                </NavLink>
                 <div className="grid gap-2">
                     <Toggle
                       id="theme"

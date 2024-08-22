@@ -44,7 +44,6 @@ const LoginForm = () => {
                 if (token) {
                     // Armazenar o token no localStorage
                     localStorage.setItem('authToken', token);
-                    window.location.href = '/dashboard';
                 }
                 setError(null);
             })
@@ -55,6 +54,7 @@ const LoginForm = () => {
             });
         } finally {
             setLoading(false);
+            window.location.pathname = '/dashboard';
             // window.location.href = '/home';
         }
     }
