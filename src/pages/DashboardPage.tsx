@@ -11,8 +11,6 @@ const DashboardPage = () => {
     return (
         <>
             {auth ? (
-                <></>                
-            ) : (
                 <div className="w-full h-fit">
                     <NavbarApp data={data} />
                     <img className="h-[25vh] w-full object-none" src="/images/success-classroom.jpg" alt="" />
@@ -23,6 +21,8 @@ const DashboardPage = () => {
                         </div>
                     </div>
                 </div>
+            ) : (
+                <></>                
             )}
         </>
     );
