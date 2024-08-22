@@ -22,7 +22,7 @@ const DashboardPage = () => {
                         </div>
                         <div className="w-[100%] flex md:flex-row lg:flex-col gap-4 group dark:text-zinc-50">
                             <IndicatorsGroup />
-                            <div className="sm:hidden md:flex lg:flex flex-col">
+                            <div className="hidden md:flex lg:flex flex-col">
                                 <h1 className="text-2xl">Indicadores</h1>
                                 <span className="text-sm">Utilize esses indicadores</span>
                             </div>
