@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Button } from "../ui/button";
 import { NavLink } from "react-router-dom";
 
-const video = "/Videos/videoplayback.mp4";
+// const video = "/Videos/videoplayback.mp4";
+const image = "/images/Header.jpg";
 
 const Header = () => {
-  useEffect(() => {
-    const video = document.getElementById("header-video") as HTMLVideoElement;
-    video.play();
-  });
+  // removed because of high outgoing traffic
+  // useEffect(() => {
+  //   const video = document.getElementById("header-video") as HTMLVideoElement;
+  //   video.play();
+  // });
 
   return (
     <div className="z-10">
       <header className="relative z-10 w-full h-[400px] md:h-[300px] lg:h-[500px]">
-        <video
+        {/* <video
           id="header-video"
           autoPlay
           loop
@@ -23,7 +25,8 @@ const Header = () => {
           onContextMenu={(e) => e.preventDefault()} // Adicionado para desativar o menu de contexto
         >
           <source src={video} type="video/mp4" />
-        </video>
+        </video> */}
+        <img className="object-top object-cover w-full h-full" src={image} alt="Student image" />
         <div className="absolute z-10 inset-0 flex flex-col text-wrap flex-wrap items-center justify-center bg-black bg-opacity-50">
           <h1 className="text-3xl font-regular p-5 text-white text-center md:text-5xl lg:text-6xl">
             Organize seus estudos com a{" "}

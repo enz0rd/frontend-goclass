@@ -61,12 +61,12 @@ const Navbar = () => {
               Planos
             </a>
           )}
-          <NavLink
-            to="#partners"
+          <a
+            href="#partners"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
           >
             Parceiros
-          </NavLink>
+          </a>
           <NavLink
             to="#about"
             className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
