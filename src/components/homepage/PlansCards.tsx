@@ -53,7 +53,7 @@ const PlansCards = () => {
   return (
     <section
       id="plans"
-      className="w-full py-12 dark:bg-zinc-900 md:py-24 lg:py-32"
+      className="w-full py-12 dark:bg-zinc-900 md:py-6 lg:py-5"
     >
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">

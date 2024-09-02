@@ -5,7 +5,7 @@ const PartnerGroup = () => {
     const partner4 = "https://via.placeholder.com/150x100";
     
     return (
-        <section id="partners" className="flex justify-center m-auto lg:h-[55vh] dark:bg-zinc-900 overflow-hidden">
+        <section id="partners" className="flex justify-center m-auto py-[5rem] dark:bg-zinc-900 overflow-hidden">
             <div className="flex flex-col lg:flex-row gap-10 justify-center items-center lg:justify-between lg:space-x-10 mx-auto">
                 <div className="flex flex-col text-center lg:text-left lg:items-start">
                     <h1 className="text-center lg:text-right md:text-center w-[16rem] dark:text-zinc-50 text-5xl font-extrabold">

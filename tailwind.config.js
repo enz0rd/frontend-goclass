@@ -70,11 +70,16 @@ module.exports = {
           '0%': { transform: 'translateY(0%)' },
           '100%': { transform: 'translateY(-33%)' },
         },
+        jelly: {
+          '0%, 100%': { transform: 'scale(1, 1)' },
+          '50%': { transform: 'scale(0.99, 1.01)' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         'scroll-down': 'scrollDown 5s linear infinite',
+        'jelly': 'jelly .3s ease-in-out'
       },
     },
   },
