@@ -1,6 +1,5 @@
 import IndicatorsGroup from "@/components/app/dashboard/indicatorsGroup";
 import NavbarApp from "@/components/app/NavbarApp";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import darkLogo from "@/assets/Logos/GoclassLogo-hat-light.png";
 import lightLogo from "@/assets/Logos/GoclassLogo-hat-dark.png";
 import { useTheme } from "@/ThemeProvider";
