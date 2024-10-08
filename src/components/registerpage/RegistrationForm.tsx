@@ -22,6 +22,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import api from "@/axiosconfig";
+import ErrorDialog from "../errorDialog";
 // import api from "@/axiosconfig";
 
 const RegisterSchema = z.object({
@@ -79,12 +80,12 @@ const RegisterSchema = z.object({
       .refine(
         (value) =>
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{5,}$/.test(
-            value
+            value,
           ),
         {
           message:
             "A senha deve possuir no mínimo 5 caracteres, contendo pelo menos uma letra maiúscula, uma minúscula, um número e um caracter especial.",
-        }
+        },
       ),
 
     email: z
@@ -106,6 +107,10 @@ const RegistrationForm = () => {
   });
 
   const [isLoadingButton, setLoadingButton] = useState(false);
+  const [error, setError] = useState<{
+    errorMessage: string;
+    title: string;
+  } | null>(null);
 
   // Verificar se o usuário é diretor ou não
   const [isDirector, setIsDirector] = useState(1);
@@ -144,22 +149,41 @@ const RegistrationForm = () => {
     setLoadingButton(true);
     var requestData = {
       ...data,
-      subscription: {}
-    }
+      subscription: {},
+    };
     requestData.subscription = subscription; // Alterado para usar a notação de ponto
-    console.log(requestData);
-    console.log(requestData.user.senha)
-    const resp = await api.post('/subscription/create', requestData);
-
-    if (resp.status === 200) {
-      window.location.href = resp.data.url;
-    } else {
+    try {
+      await api.post("/subscription/create", requestData).then((resp) => {
+        setLoadingButton(false);
+        if (resp.status === 200) {
+          window.location.href = resp.data.url;
+        } else {
+          setLoadingButton(false);
+        }
+      });
+    } catch (error: any) {
+      setError({
+        errorMessage:
+          error.response?.data?.message || "Ocorreu um erro desconhecido.",
+        title: "Erro ao realizar cadastro",
+      });
       setLoadingButton(false);
     }
   };
 
+  const handleCloseError = () => {
+    setError(null);
+  };
+
   return (
     <div className="mx-[10%] group dark:text-zinc-50 mt-[40%] mb-[40%] lg:mx-auto md:mx-auto lg:mt-[10%] md:mt-[10%] max-w-2xl space-y-6 py-12">
+      {error ? (
+        <ErrorDialog
+          title={error.title}
+          error={error.errorMessage}
+          onClose={handleCloseError}
+        />
+      ) : null}
       <h1>Você escolheu o plano: {plan + " " + type}</h1>
       {step === 1 && (
         <div className="space-y-4">

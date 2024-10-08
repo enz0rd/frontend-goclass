@@ -7,7 +7,7 @@ const ErrorDialog = ({ error, title, onClose }: { error: string, title: string, 
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[55]">
-            <div className="bg-white shadow-lg rounded-lg p-6 relative">
+            <div className="bg-white dark:bg-zinc-900 group dark:text-zinc-50 shadow-lg rounded-lg p-6 relative">
                 <button
                     className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
                     onClick={() => {
@@ -18,7 +18,7 @@ const ErrorDialog = ({ error, title, onClose }: { error: string, title: string, 
                     &times;
                 </button>
                 <h1 className="text-xl font-semibold">{title}</h1>
-                <p className="mt-2 text-sm text-gray-600">{error}</p>
+                <p className="mt-2 text-sm text-gray-500">{error}</p>
             </div>
         </div>
     );

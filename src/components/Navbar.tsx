@@ -32,48 +32,60 @@ const Navbar = () => {
         </NavLink>
         <nav className="hidden items-center gap-4 md:flex">
           {window.location.pathname === "/" ? (
-            <a
-              href="#top"
-              className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
-            >
-              Início
-            </a>
+            <>
+              <a
+                href="#top"
+                className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
+              >
+                Início
+              </a>
+              <a
+                href="#plans"
+                className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
+              >
+                Planos
+              </a>
+              <a
+                href="#partners"
+                className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
+              >
+                Parceiros
+              </a>
+              <NavLink
+                to="#about"
+                className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
+              >
+                Sobre Nós
+              </NavLink>
+            </>
           ) : (
-            <a
-              href="/"
-              className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
-            >
-              Início
-            </a>
+            <>
+              <a
+                href="/"
+                className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
+              >
+                Início
+              </a>
+              <a
+                href="/#plans"
+                className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
+              >
+                Planos
+              </a>
+              <a
+                href="/#partners"
+                className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
+              >
+                Parceiros
+              </a>
+              <a
+                href="/#about"
+                className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
+              >
+                Sobre Nós
+              </a>
+            </>
           )}
-          {window.location.pathname === "/" ? (
-            <a
-              href="#plans"
-              className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
-            >
-              Planos
-            </a>
-          ) : (
-            <a
-              href="/#plans"
-              className="dark:text-zinc-50 text-sm font-medium hover:underline hover:underline-offset-4"
-            >
-              Planos
-            </a>
-          )}
-          <a
-            href="#partners"
-            className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
-          >
-            Parceiros
-          </a>
-          <NavLink
-            to="#about"
-            className="text-sm font-medium hover:underline dark:text-zinc-50 hover:underline-offset-4"
-          >
-            Sobre Nós
-          </NavLink>
-
           <Popover>
             <PopoverTrigger asChild>
               <a className="cursor-pointer">

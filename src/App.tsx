@@ -2,6 +2,11 @@ import { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Preloader from "@/components/PreLoader";
+import ActivitiesPage from "./pages/ActivitiesPage";
+import SelectAccountPage from "./pages/SelectAccountPage";
+import DashboardLayout from "./components/app/DashboardLayout";
+import SingleActivityPage from "./pages/SingleActivityPage";
+import SendPage from "./pages/SendPage";
 
 // Importação dinâmica dos componentes
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -25,7 +30,13 @@ function App() {
       {loading ? (
         <Preloader key="preloader" />
       ) : (
-        <Suspense fallback={<div><Preloader /></div>}>
+        <Suspense
+          fallback={
+            <div>
+              <Preloader />
+            </div>
+          }
+        >
           <motion.div
             style={{
               width: "100%",
@@ -39,9 +50,58 @@ function App() {
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/selectAccount" element={<SelectAccountPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/register/success" element={<SuccessPage />} />
               <Route path="/register/cancel" element={<CancelPage />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <DashboardLayout>
+                    <DashboardPage />
+                  </DashboardLayout>
+                }
+              />
+              <Route
+                path="/atividades"
+                element={
+                  <DashboardLayout>
+                    <ActivitiesPage />
+                  </DashboardLayout>
+                }
+              />
+              <Route
+                path="/atividades/:id"
+                element={
+                  <DashboardLayout>
+                    <SingleActivityPage />
+                  </DashboardLayout>
+                }
+              />
+              <Route
+                path="/notas"
+                element={
+                  <DashboardLayout>
+                    <ActivitiesPage />
+                  </DashboardLayout>
+                }
+              />
+              <Route
+                path="/entregar"
+                element={
+                  <DashboardLayout>
+                    <SendPage />
+                  </DashboardLayout>
+                }
+              />
+              <Route
+                path="/mensagens"
+                element={
+                  <DashboardLayout>
+                    <ActivitiesPage />
+                  </DashboardLayout>
+                }
+              />
               <Route path="/dashboard" element={<DashboardPage />} />
             </Routes>
           </motion.div>

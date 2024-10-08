@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
+import { NavLink } from "react-router-dom";
 
 const Activity = ({to, title, icon, time} : {to: string, title: string, icon: ReactElement, time: string}) => {
     return (
-        <a href={to} className="hover:animate-jelly gap-3 bg-gradient-to-br dark:from-zinc-800 rounded-lg border border-zinc-700 dark:to-zinc-950 p-3 border-lg w-full flex justify-between mx-auto align-middle">
+        <NavLink to={to} className="hover:animate-jelly gap-3 bg-gradient-to-br dark:from-zinc-800 rounded-lg border border-zinc-700 dark:to-zinc-950 p-3 border-lg w-full flex justify-between mx-auto align-middle">
             <div className="w-[10%] flex align-middle justify-center">
                 {icon}
             </div>
@@ -11,7 +12,7 @@ const Activity = ({to, title, icon, time} : {to: string, title: string, icon: Re
                 <span className="text-sm text-muted-foreground">Toque para ver detalhes</span>
             </div>
             <span className="w-[15%] lg:w-[10%] text-right my-auto text-muted-foreground">{time}</span>
-        </a>
+        </NavLink>
     )
 }
 
