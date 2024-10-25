@@ -13,11 +13,11 @@ const ActivitiesGroup = () => {
                 </div>
                 <ScrollArea className="p-4 overflow-x-auto whitespace-nowrap group dark:text-zinc-50">
                     <div className="flex flex-col gap-2">
-                        <Activity to={`/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
-                        <Activity to={`/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
-                        <Activity to={`/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
-                        <Activity to={`/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
-                        <Activity to={`/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
+                        <Activity to={`/aluno/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
+                        <Activity to={`/aluno/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
+                        <Activity to={`/aluno/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
+                        <Activity to={`/aluno/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
+                        <Activity to={`/aluno/atividades/${Math.random()}`} title="Nova Atividade" icon={<BookOpenText className="m-auto" />}  time='10:00'/>
                     </div>
                 </ScrollArea>
             </div>

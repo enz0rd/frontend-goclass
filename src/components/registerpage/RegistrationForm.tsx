@@ -129,7 +129,7 @@ const RegistrationForm = () => {
   const plan = params.get("plan");
   const type = params.get("type");
   // Dados do plano: se não houver nada informado, redireciona o usuário para a página inicial
-  if (type === undefined || plan === undefined) window.location.href = "/";
+  if (type === null || plan === null) window.location.href = "/";
 
   // Formulário de dados pessoais: se o usuário é pessoa física ou jurídica
   const [isJuridic, setJuridic] = useState(false);

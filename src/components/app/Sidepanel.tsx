@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
 import {
-  PanelRight,
-  MailIcon,
-  CheckCircle,
-  GraduationCap,
-  BookOpenText,
   CopyrightIcon,
   ArrowBigLeft,
   ArrowBigRight,
 } from "lucide-react";
 import { useState } from "react";
+import React from "react";
+import { RotaProps } from "./utils";
 
-const Sidepanel = () => {
+interface SidebarRotaProps {
+  rotas: RotaProps[];
+}
+
+const Sidepanel = ({ rotas }: SidebarRotaProps) => {
   const [minimized, setMinimized] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,14 +34,16 @@ const Sidepanel = () => {
         justify-between gap-6 group dark:text-zinc-50`}
     >
       <div className={`flex flex-col ${minimized ? "gap-4" : "gap-2"}`}>
-        <NavLink
-          className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 ${minimized ? "align-middle mx-auto" : "py-1 px-2"} rounded-md transition-[.2s]`}
-          to="/dashboard"
-        >
-          <PanelRight />
-        {minimized ? "" : "Dashboard"}
-        </NavLink>
-        <NavLink
+        {rotas.map((rota) => (
+          <NavLink
+            className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 ${minimized ? "align-middle mx-auto" : "py-1 px-2"} rounded-md transition-[.2s]`}
+            to={rota.rota}
+          >
+            {React.createElement(rota.icone)}
+          {minimized ? "" : rota.nome}
+          </NavLink>
+        ))}
+        {/* <NavLink
           className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 ${minimized ? "align-middle mx-auto" : "py-1 px-2"} rounded-md transition-[.2s]`}
           to="/atividades"
           >
@@ -67,7 +70,7 @@ const Sidepanel = () => {
         >
           <MailIcon />
           {minimized ? "" : "Mensagens"}
-        </NavLink>
+        </NavLink> */}
       </div>
       <div className="">
         {minimized ? (

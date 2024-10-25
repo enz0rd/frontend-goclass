@@ -5,6 +5,7 @@ const api = axios.create({
   baseURL: "https://apidevelopment-goclass.vercel.app/v1",
   headers: {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
   },
 });
 

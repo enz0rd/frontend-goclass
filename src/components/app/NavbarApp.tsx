@@ -22,9 +22,21 @@ import { Label } from "@/components/ui/label";
 import { Toggle } from "@radix-ui/react-toggle";
 import { useTheme } from "@/ThemeProvider";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { BookOpenText, CheckCircle, GraduationCap, MailIcon, PanelRight } from "lucide-react";
+import {
+  BookOpenText,
+  CheckCircle,
+  GraduationCap,
+  MailIcon,
+  PanelRight,
+} from "lucide-react";
+import { RotaProps } from "./utils";
+import React from "react";
 
-const NavbarApp = () => {
+interface NavbarRotaProps {
+  rotas: RotaProps[];
+}
+
+const NavbarApp = ({ rotas }: NavbarRotaProps) => {
   const { isDarkMode, toggleTheme } = useTheme(); // Access the theme context
   const nomeInst = localStorage.getItem("nomeInst") || "undefined";
   const nomeUsuario = localStorage.getItem("name") || "undefined";
@@ -72,7 +84,18 @@ const NavbarApp = () => {
                     {nomeInst}
                   </span>
                 </div>
-                <NavLink
+                {rotas?.map((rota) => (
+                  <NavLink
+                    key={rota.nome}
+                    className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 
+                    py-1 px-1 rounded-md transition-[.2s]`}
+                    to={rota.rota}
+                  >
+                    {React.createElement(rota.icone)}
+                    {rota.nome}
+                  </NavLink>
+                ))}
+                {/* <NavLink
                   className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 
                   py-1 px-1 rounded-md transition-[.2s]`}
                   to="/dashboard"
@@ -111,7 +134,7 @@ const NavbarApp = () => {
                 >
                   <MailIcon />
                   Mensagens
-                </NavLink>
+                </NavLink> */}
                 <a
                   href="/login"
                   onClick={handleLogout}

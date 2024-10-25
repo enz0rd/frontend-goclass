@@ -21,15 +21,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollBar } from "@/components/ui/scroll-area";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  searchCriteria?: string;
+  showSearch?: boolean;
 }
 
 function DataTable<TData, TValue>({
   columns,
   data,
+  searchCriteria = 'name',
+  showSearch = true,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -53,17 +59,19 @@ function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4 mt-5">
-        <Input
-          placeholder="Filtrar dados..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm border-zinc-500"
-        />
-      </div>
-      <div className="rounded-md border border-zinc-500">
+      {showSearch ? (
+        <div className="flex items-center py-4 mt-5">
+          <Input
+            placeholder="Filtrar dados..."
+            value={(table.getColumn(searchCriteria)?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn(searchCriteria)?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm border-zinc-500"
+          />
+        </div>
+      ) : null}
+      <ScrollArea className="rounded-md border border-zinc-500">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -112,7 +120,8 @@ function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
+        <ScrollBar />
+      </ScrollArea>
     </div>
   );
 }

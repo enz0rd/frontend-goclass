@@ -1,15 +1,15 @@
 import IndicatorsGroup from "@/components/app/dashboard/indicatorsGroup";
-// import NavbarApp from "@/components/app/NavbarApp";
 import darkLogo from "@/assets/Logos/GoclassLogo-hat-light.png";
 import lightLogo from "@/assets/Logos/GoclassLogo-hat-dark.png";
 import { useTheme } from "@/ThemeProvider";
 import FunctionsGroup from "@/components/app/dashboard/FunctionsGroup";
 import ActivitiesGroup from "@/components/app/dashboard/ActivitiesGroup";
+import { getRole } from "@/components/app/utils";
 
 const DashboardPage = () => {
   const { isDarkMode } = useTheme(); // Access the theme context
-  const auth = localStorage.getItem("authToken");
-  if (!auth) window.location.href = "/login";
+  const role = getRole();
+  
   const data = {
     data: localStorage.getItem("userData") || {},
     user_name: localStorage.getItem("name") || "Usuário",
@@ -39,8 +39,8 @@ const DashboardPage = () => {
               className="w-[7%] object-contain"
             />
           </div>
-          <IndicatorsGroup />
-          <FunctionsGroup />
+          <IndicatorsGroup role={role}/>
+          <FunctionsGroup role={role}/>
           <ActivitiesGroup />
         </div>
       </div>

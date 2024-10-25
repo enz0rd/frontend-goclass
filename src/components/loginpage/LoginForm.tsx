@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import api from "@/axiosconfig";
 import { useEffect, useState } from "react";
 import ErrorDialog from "../errorDialog";
+import { getRole } from "../app/utils";
 
 const invalid_type_error = "O email informado é inválido.";
 const invalid_length_error = "A senha precisa ter no mínimo 5 caracteres.";
@@ -56,7 +57,36 @@ const LoginForm = () => {
       if (multipleAccounts) {
         window.location.pathname = "/selectAccount";
       } else {
-        window.location.pathname = "/dashboard";
+        const userRole = getRole();
+        switch(userRole) {
+          case "admin": {
+            window.location.pathname = "/instituicao/dashboard";
+            break;
+          }
+          case "aluno": {
+            window.location.pathname = "/dashboard";
+            break;
+          }
+          case "professor": {
+            window.location.pathname = "/professor/dashboard";
+            break;
+          }
+          case "colaborador": {
+            window.location.pathname = "/instituicao/dashboard";
+            break;
+          }
+          case "responsavel": {
+            window.location.pathname = "/pais/dashboard";
+            break;
+          }
+          default: {
+            console.error("Unknown role");
+            setError({
+              errorMessage: "Não foi possível redirecionar, tente novamente mais tarde.",
+              title: "Erro ao realizar login",
+            })
+          }
+        }
       }
     } catch (error: any) {
       setError({
