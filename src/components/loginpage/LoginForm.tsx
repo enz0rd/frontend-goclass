@@ -64,7 +64,7 @@ const LoginForm = () => {
             break;
           }
           case "aluno": {
-            window.location.pathname = "/dashboard";
+            window.location.pathname = "/aluno/dashboard";
             break;
           }
           case "professor": {

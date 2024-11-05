@@ -19,7 +19,7 @@ const DashboardPage = () => {
     <>
       <div className="w-full bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-900 from-zinc-200 to-40% to-zinc-50 justify-center">
         <img
-          className="h-[10rem] w-full object-none"
+          className="h-[10rem] w-full object-cover"
           src="/images/success-classroom.jpg"
           alt=""
         />
