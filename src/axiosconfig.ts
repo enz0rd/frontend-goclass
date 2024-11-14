@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Crie uma instância do axios
 const api = axios.create({
-  baseURL: "http://localhost:8000/v1",
+  baseURL: "https://apidevelopment-goclass.vercel.app/v1",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
