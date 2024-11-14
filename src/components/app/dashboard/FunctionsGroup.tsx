@@ -27,6 +27,7 @@ const FunctionsGroup = ({ role }: { role: string }) => {
           <div className="flex space-x-4 justify-center flex-grow">
             {props.map((prop) => (
               <Function
+                key={prop.nome}
                 to={prop.rota}
                 title={prop.nome}
                 icon={React.isValidElement<React.SVGProps<SVGSVGElement>>(prop.icone) ? React.cloneElement<React.SVGProps<SVGSVGElement>>(prop.icone, { width: 40, height: 40, className: "my-auto" }) : React.createElement(prop.icone as React.ElementType, { width: 40, height: 40, className: "my-auto" })}

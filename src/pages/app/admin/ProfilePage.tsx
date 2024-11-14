@@ -1,12 +1,71 @@
+import api from "@/axiosconfig";
 import Address from "@/components/app/profile/Address";
 import Subscription from "@/components/app/profile/Subscription";
 import { Button } from "@/components/ui/button";
 import { PenBox, SchoolIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
+interface InstitutionData {
+  data: {
+    institution: {
+      id: number,
+      razao_social: string,
+      nome_fantasia: string,
+      cnpj: string,
+      end_logradouro: string,
+      end_cidade: string,
+      end_uf: string,
+      end_cep: string,
+    },
+    subscription: {
+      id: number,
+      plano: string,
+      current_period_end: string,
+      status: string,
+      value: number,
+    }
+  }
+}
 
 const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
+  const [fetching, setFetching] = useState(true);
+  const [data, setData] = useState<InstitutionData>({
+    data: {
+      institution: {
+        id: 0,
+        razao_social: '',
+        nome_fantasia: '',
+        cnpj: '',
+        end_logradouro: '',
+        end_cidade: '',
+        end_uf: '',
+        end_cep: '',
+      },
+      subscription: {
+        id: 0,
+        plano: '',
+        current_period_end: '',
+        status: '',
+        value: 0,
+      },
+    }
+  });
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = await api.get(`/institutions/getInstitutionDetails?id=${localStorage.getItem('InstitutionId')}`);
+      setData(resp.data);
+      setLoading(false);
+    };
+
+    if (fetching) {
+      fetchData();
+      setFetching(false);
+    }
+  }, [fetching]);
 
   setTimeout(() => {
     setLoading(false);
@@ -49,17 +108,17 @@ const ProfilePage = () => {
           <div className="container-lg flex flex-col lg:flex-row justify-between">
             <div className="ml-[13rem] md:ml-[15rem] lg:ml-[17rem] mt-3 pr-3">
               <h1 className="dark:text-zinc-50 font-bold text-2xl md:text-4xl lg:text-4xl">
-                E.E.B. Vidal Ramos Júnior
+                {data.data.institution.nome_fantasia}
               </h1>
               <p className="text-zinc-500 dark:text-zinc-400 text-lg">
-                Escola Estadual de Educação Básica Vidal Ramos Júnior
+                {data.data.institution.razao_social}
               </p>
               <small className="text-zinc-500 dark:text-zinc-400">
-                00.000.000/0001-00
+                {data.data.institution.cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")}
               </small>
             </div>
             <div className="m-auto w-full lg:w-fit px-10 pt-3">
-              <NavLink to={'/instituicao/perfil/editar'}>
+              <NavLink to={`/instituicao/perfil/editar?id=${data.data.institution.id}`}>
                 <Button className="w-full flex flex-row gap-3">
                   <PenBox width={20} />
                   <p>Editar perfil</p>
@@ -67,10 +126,20 @@ const ProfilePage = () => {
               </NavLink>
             </div>
           </div>
-          <div className="container justify-center">
+          <div className="container justify-center mt-5">
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 justify-around flex-wrap">
-              <Subscription />
-              <Address />
+              <Subscription 
+                planoId={data.data.subscription.id}
+                plano={data.data.subscription.plano}
+                proximoPagamento={data.data.subscription.current_period_end}
+                valor={data.data.subscription.value.toString()}
+              />
+              <Address 
+                logradouro={data.data.institution.end_logradouro}
+                cidade={data.data.institution.end_cidade}
+                uf={data.data.institution.end_uf}
+                cep={data.data.institution.end_cep.replace(/(\d{5})(\d{3})/, "$1-$2")}
+              />
             </div>
           </div>
         </div>

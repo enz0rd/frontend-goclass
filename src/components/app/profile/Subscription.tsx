@@ -3,16 +3,23 @@ import { EyeIcon, EyeOff, SettingsIcon } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const Subscription = () => {
+interface SubscriptionProps {
+  planoId: number;
+  plano: string;
+  proximoPagamento: string;
+  valor: string;
+}
+
+const Subscription = ({ planoId, plano, proximoPagamento, valor }: SubscriptionProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
   const handleHide = () => {
     setIsHidden(!isHidden);
   };
 
-  const plano = "Uni";
-  const prox_pagamento = "10/10/2021";
-  const valor = "R$397,00";
+  const planoAtual = plano.toUpperCase();
+  const prox_pagamento = new Date(proximoPagamento).toLocaleDateString("pt-BR");
+  const valorAtual = `R$${valor}`;
 
   return (
     <div className="flex flex-col w-full">
@@ -25,7 +32,7 @@ const Subscription = () => {
         )}
       </div>
       <span className="text-lg font-semibold dark:text-zinc-400 text-zinc-600">
-        GoClass {plano}
+        GoClass {planoAtual}
       </span>
       <span className="dark:text-zinc-400 text-zinc-600 flex flex-row justify-between">
         <p>Próximo pagamento:</p>
@@ -36,10 +43,10 @@ const Subscription = () => {
       <span className="dark:text-zinc-400 text-zinc-600 flex flex-row justify-between">
         <p>Valor:</p>
         <p className={isHidden ? `blur-sm` : `blur-none`}>
-          {isHidden ? "R$00,00" : valor}
+          {isHidden ? "R$00,00" : valorAtual}
         </p>
       </span>
-      <NavLink to="/instituicao/gerenciar-plano">
+      <NavLink to={`/instituicao/gerenciar-plano?id=${planoId}`}>
         <Button className="w-full flex flex-row gap-3 mt-4">
           <SettingsIcon width={20} /> Gerenciar Plano
         </Button>

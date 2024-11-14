@@ -153,6 +153,7 @@ const RegistrationForm = () => {
     };
     requestData.subscription = subscription; // Alterado para usar a notação de ponto
     try {
+      console.log(requestData)
       await api.post("/subscription/create", requestData).then((resp) => {
         setLoadingButton(false);
         if (resp.status === 200) {

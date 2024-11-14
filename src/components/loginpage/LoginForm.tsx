@@ -30,8 +30,6 @@ const LoginForm = () => {
     title: string;
   } | null>(null);
 
-  var multipleAccounts = false;
-
   const {
     register,
     handleSubmit,
@@ -46,46 +44,44 @@ const LoginForm = () => {
       await api.post("/login", data).then((response) => {
         console.log(response.data);
         if (response.data.multipleAccounts == true) {
-          multipleAccounts = true;
+          localStorage.setItem("authToken", response.data.token);
+          localStorage.setItem("name", response.data.name);
+          window.location.pathname = "/selectAccount";
         }
-        console.log(response.data);
         localStorage.setItem("authToken", response.data.token);
         localStorage.setItem("name", response.data.name);
         setError(null);
       });
       setLoading(false);
-      if (multipleAccounts) {
-        window.location.pathname = "/selectAccount";
-      } else {
-        const userRole = getRole();
-        switch(userRole) {
-          case "admin": {
-            window.location.pathname = "/instituicao/dashboard";
-            break;
-          }
-          case "aluno": {
-            window.location.pathname = "/aluno/dashboard";
-            break;
-          }
-          case "professor": {
-            window.location.pathname = "/professor/dashboard";
-            break;
-          }
-          case "colaborador": {
-            window.location.pathname = "/instituicao/dashboard";
-            break;
-          }
-          case "responsavel": {
-            window.location.pathname = "/pais/dashboard";
-            break;
-          }
-          default: {
-            console.error("Unknown role");
-            setError({
-              errorMessage: "Não foi possível redirecionar, tente novamente mais tarde.",
-              title: "Erro ao realizar login",
-            })
-          }
+      const userRole = getRole();
+      switch (userRole) {
+        case "admin": {
+          window.location.pathname = "/instituicao/dashboard";
+          break;
+        }
+        case "aluno": {
+          window.location.pathname = "/aluno/dashboard";
+          break;
+        }
+        case "professor": {
+          window.location.pathname = "/professor/dashboard";
+          break;
+        }
+        case "colaborador": {
+          window.location.pathname = "/instituicao/dashboard";
+          break;
+        }
+        case "responsavel": {
+          window.location.pathname = "/pais/dashboard";
+          break;
+        }
+        default: {
+          console.error("Unknown role");
+          setError({
+            errorMessage:
+              "Não foi possível redirecionar, tente novamente mais tarde.",
+            title: "Erro ao realizar login",
+          });
         }
       }
     } catch (error: any) {
@@ -102,10 +98,13 @@ const LoginForm = () => {
   const [hasParams] = useState(false);
 
   useEffect(() => {
-    const notAuthParam = window.location.search.includes("msg=%27not-authorized%27");
+    const notAuthParam = window.location.search.includes(
+      "msg=%27not-authorized%27"
+    );
     if (notAuthParam) {
       setError({
-        errorMessage: "Você não está autorizado a acessar esta página, por gentileza faça login novamente",
+        errorMessage:
+          "Você não está autorizado a acessar esta página, por gentileza faça login novamente",
         title: "Não autorizado",
       });
     }

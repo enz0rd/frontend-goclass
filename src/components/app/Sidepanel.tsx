@@ -36,6 +36,7 @@ const Sidepanel = ({ rotas }: SidebarRotaProps) => {
       <div className={`flex flex-col ${minimized ? "gap-4" : "gap-2"}`}>
         {rotas.map((rota) => (
           <NavLink
+            key={rota.nome}
             className={`flex flex-row gap-2 hover:bg-zinc-300 dark:hover:bg-zinc-800 ${minimized ? "align-middle mx-auto" : "py-1 px-2"} rounded-md transition-[.2s]`}
             to={rota.rota}
           >

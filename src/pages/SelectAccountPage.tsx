@@ -13,6 +13,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "@/axiosconfig";
+import { getRole } from "@/components/app/utils";
 
 const AccountSchema = z.object({
   account: z.string({
@@ -49,6 +50,37 @@ const SelectAccountPage = () => {
   async function HandleProceed(data: AccountType) {
     setIsLoadingButton(true);
     console.log(data);
+    const resp = await api.post(`/loginWithMultipleAccounts?account=${data.account}`).then((response) => {
+      console.log(response.data);
+      localStorage.setItem("authToken", response.data.token);
+      localStorage.setItem('nomeInst', response.data.nomeInst);
+      const userRole = getRole();
+      switch (userRole) {
+        case "admin": {
+          window.location.pathname = "/instituicao/dashboard";
+          break;
+        }
+        case "aluno": {
+          window.location.pathname = "/aluno/dashboard";
+          break;
+        }
+        case "professor": {
+          window.location.pathname = "/professor/dashboard";
+          break;
+        }
+        case "colaborador": {
+          window.location.pathname = "/instituicao/dashboard";
+          break;
+        }
+        case "responsavel": {
+          window.location.pathname = "/pais/dashboard";
+          break;
+        }
+        default: {
+          console.error("Unknown role");
+        }
+      }
+    });
 
     setTimeout(() => {
       setIsLoadingButton(false);
@@ -61,20 +93,20 @@ const SelectAccountPage = () => {
       <div className="w-full flex h-[90vh] justify-center align-middle">
         <form
           onSubmit={handleSubmit(HandleProceed)}
-          className="flex flex-col w-[20rem] gap-5 m-auto bg-zinc-50 border p-5 rounded-lg border-zinc-300"
+          className="flex flex-col w-[20rem] gap-5 m-auto bg-zinc-50 dark:bg-zinc-900 border p-5 rounded-lg border-zinc-500"
         >
-          <h1>Selecione a instituição em que deseja logar</h1>
+          <h1 className="dark:text-zinc-50">Selecione a instituição em que deseja logar</h1>
           <Select
             value={selectedAccount} // Define o valor atual do Select
             onValueChange={(value) => {
-              setValue("account", value); // Define o valor no formulário
+              setValue("account", value, { shouldValidate: true }); // Define o valor no formulário e valida
               setSelectedAccount(value); // Atualiza o estado local para o valor selecionado
             }}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full dark:bg-zinc-950 dark:text-zinc-50">
               <SelectValue placeholder="Selecione a conta" />
             </SelectTrigger>
-            <SelectContent id="select-account">
+            <SelectContent id="select-account" className="dark:bg-zinc-950">
               <SelectGroup>
                 {accounts && accounts.length > 0
                   ? accounts.map((account) => (
@@ -83,9 +115,6 @@ const SelectAccountPage = () => {
                       </SelectItem>
                     ))
                   : null}
-                <SelectItem key="5" value="5">
-                  Teste
-                </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -96,7 +125,7 @@ const SelectAccountPage = () => {
             <div className="flex flex-row justify-between">
               <Button
                 variant="outline"
-                className="dark:bg-zinc-50 dark:text-primary"
+                className="dark:bg-zinc-900 dark:text-primary"
                 disabled
               >
                 Voltar
@@ -131,7 +160,9 @@ const SelectAccountPage = () => {
             <div className="flex flex-row justify-between">
               <Button
                 variant="outline"
-                className="dark:bg-zinc-50 dark:text-primary"
+                className="dark:bg-zinc-950 dark:border-primary dark:text-primary"
+                type="button"
+                onClick={() => window.history.back()}
               >
                 Voltar
               </Button>
