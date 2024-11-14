@@ -50,7 +50,7 @@ const SelectAccountPage = () => {
   async function HandleProceed(data: AccountType) {
     setIsLoadingButton(true);
     console.log(data);
-    const resp = await api.post(`/loginWithMultipleAccounts?account=${data.account}`).then((response) => {
+    await api.post(`/loginWithMultipleAccounts?account=${data.account}`).then((response) => {
       console.log(response.data);
       localStorage.setItem("authToken", response.data.token);
       localStorage.setItem('nomeInst', response.data.nomeInst);
