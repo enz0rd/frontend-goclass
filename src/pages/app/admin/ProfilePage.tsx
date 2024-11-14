@@ -2,6 +2,7 @@ import api from "@/axiosconfig";
 import Address from "@/components/app/profile/Address";
 import Subscription from "@/components/app/profile/Subscription";
 import { Button } from "@/components/ui/button";
+import { decodeJwt } from "jose";
 import { PenBox, SchoolIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -37,7 +38,7 @@ const ProfilePage = () => {
         id: 0,
         razao_social: '',
         nome_fantasia: '',
-        cnpj: '',
+        cnpj: '00000000000000',
         end_logradouro: '',
         end_cidade: '',
         end_uf: '',
@@ -56,7 +57,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await api.get(`/institutions/getInstitutionDetails?id=${localStorage.getItem('InstitutionId')}`);
+      const token = decodeJwt(localStorage.getItem('authToken')?.split(' ')[1] || '');
+      const tokenData = token as { data: { institutionId: number } };
+      console.log(tokenData.data.institutionId);
+
+      const resp = await api.get(`/institutions/getInstitutionDetails?id=${tokenData.data.institutionId}`);
       setData(resp.data);
       setLoading(false);
     };
@@ -114,7 +119,7 @@ const ProfilePage = () => {
                 {data.data.institution.razao_social}
               </p>
               <small className="text-zinc-500 dark:text-zinc-400">
-                {data.data.institution.cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")}
+                {(data.data.institution.cnpj).replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")}
               </small>
             </div>
             <div className="m-auto w-full lg:w-fit px-10 pt-3">
@@ -138,7 +143,7 @@ const ProfilePage = () => {
                 logradouro={data.data.institution.end_logradouro}
                 cidade={data.data.institution.end_cidade}
                 uf={data.data.institution.end_uf}
-                cep={data.data.institution.end_cep.replace(/(\d{5})(\d{3})/, "$1-$2")}
+                cep={data.data.institution.end_cep?.replace(/(\d{5})(\d{3})/, "$1-$2") || ''}
               />
             </div>
           </div>
